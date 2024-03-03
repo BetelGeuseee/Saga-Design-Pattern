@@ -41,7 +41,7 @@ public class PaymentService {
 
     private void completeTransaction(OrderEvent orderEvent) {
        for(Payment payment : bankBalanceInfo){
-           if(orderEvent.getUserId() == payment.getUserId()){
+           if(orderEvent.getUserId().equals(payment.getUserId())){
                payment.setBankBalance(payment.getBankBalance()-orderEvent.getOrderAmount());
            }
        }
@@ -49,7 +49,7 @@ public class PaymentService {
 
     private boolean checkIfEnoughBankBalance(OrderEvent orderEvent){
        for(Payment payment : bankBalanceInfo){
-           if(orderEvent.getUserId() == payment.getUserId()){
+           if(orderEvent.getUserId().equals(payment.getUserId())){
                if(payment.getBankBalance() >= orderEvent.getOrderAmount())
                    return true;
            }
@@ -59,7 +59,7 @@ public class PaymentService {
 
     public Payment getBankBalanceOfUser(Integer userId){
         for(Payment payment : bankBalanceInfo){
-            if(payment.getUserId() == userId){
+            if(payment.getUserId().equals(userId)){
                 return payment;
             }
         }
