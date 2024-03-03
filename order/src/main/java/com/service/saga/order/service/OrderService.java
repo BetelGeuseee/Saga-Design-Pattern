@@ -40,7 +40,7 @@ public class OrderService {
 
     public void compensateTransaction(PaymentEvent paymentEvent){
        Integer orderId = paymentEvent.getOrderId();
-       orderList.removeIf((order)-> order.getOrderId() == orderId);
+       orderList.removeIf((order)-> order.getOrderId().equals(orderId));
     }
     public List<Order> getAllOrder(){
 
